@@ -1,5 +1,9 @@
-# Python-Master-Safe
+# Application-Template-Notes
 
-One script application templates. From data science, small games, shell scripts and more.
+Starting folder structures.
 
-application template structures to resuse and modify. pygame, godot game engine, FASTapi, asyncio etc 
+Starting file boilerplate code.
+
+Notes to guide myself and others for future potiential roadblocks.
+
+Games, Websites, Data Science, Machine Learning, GUIs and TUIs... Whatever your heart desires to create at 2:14am on a Tuesday
