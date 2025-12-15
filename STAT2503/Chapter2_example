@@ -1,0 +1,48 @@
+
+# Q22 of the Practice Exam for Chapter1-4
+
+# For the given data, construct a frequency distribution and frequency 
+# histogram of the data using five classes. Describe the shape of the 
+# histogram as symmetric, uniform, skewed left, or skewed right.
+
+# Data set: California Pick Three Lottery
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Data set provided
+data = [8,6,7,6,0,9,1,7,8,4,1,5,7,5,9,7,5,3,9,9,8,8,3,9,8,8,9,0,2,7]
+
+# Create a pandas Series
+s = pd.Series(data)
+
+# Number of classes specified
+k = 5
+
+# Get min and max
+data_min, data_max = s.min(), s.max()
+data_range = data_max - data_min
+
+# Class width (round up to whole number)
+class_width = int(np.ceil(data_range / k))
+
+# Bin edges
+bins = np.arange(data_min, data_max + class_width, class_width)
+
+# Frequency distribution
+freq_table = pd.cut(s, bins=bins, right=True, include_lowest=True).value_counts().sort_index()
+
+# Prepare table as DataFrame
+freq_df = freq_table.reset_index()
+freq_df.columns = ["Class Interval", "Frequency"]
+
+import caas_jupyter_tools
+caas_jupyter_tools.display_dataframe_to_user("Frequency Distribution", freq_df)
+
+# Plot histogram
+plt.hist(s, bins=bins, edgecolor="black")
+plt.xlabel("Lottery Numbers")
+plt.ylabel("Frequency")
+plt.title("Frequency Histogram of Lottery Numbers")
+plt.show()
